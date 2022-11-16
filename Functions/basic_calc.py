@@ -27,5 +27,3 @@ def get_choice():
     else:
         print('Not an option!')
         get_choice()
-
-get_choice()
