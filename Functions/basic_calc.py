@@ -27,12 +27,17 @@ def get_choice():
                 print('Not a number!')
                 num = input('Enter a number (press enter when done): ')
 
-        print(sum(nums))
+        print(f'Result: {sum(nums)}')
         print('\n')
         get_choice()
 
     elif choice == 'sub':
-        pass
+        num1 = int(input('Enter the first number: '))
+        num2 = int(input('Enter the second number: '))
+        res = num1 - num2
+        print(f'Result: {res}'
+        get_choice()
+        
     elif choice == 'mult':
         pass
     elif choice == 'div':
