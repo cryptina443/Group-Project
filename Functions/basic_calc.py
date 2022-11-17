@@ -2,14 +2,14 @@ def print_calc_options():
     '''prints calculator options'''
 
 
-    print('\nOPTIONS\n')
+    print('\nOPTIONS')
     print('(add) Addition')
     print('(sub) Subtraction')
     print('(mult) Multiplication')
     print('(div) Division')
-    print('(exp) Exponents\n')
+    print('(exp) Exponents')
     print('(back) Go back to main menu')
-    print('(exit) Exit the program')
+    print('(exit) Exit the program\n')
 
 
 def get_choice():
@@ -17,38 +17,66 @@ def get_choice():
 
     choice = input('Choose an option: ').lower()
     if choice == 'add':
-        nums = []
-        num = input('Enter a number (press enter when done): ')
-        while num != '':
-            if num.isdigit():
-                nums.append(int(num))
-                num = input('Enter a number (press enter when done): ')
-            else:
-                print('Not a number!')
-                num = input('Enter a number (press enter when done): ')
-
-        print(f'Result: {sum(nums)}')
-        print('\n')
+        print('\nAddition\n')
+        num1 = float(input('Enter the first number: '))
+        num2 = float(input('Enter the second number: '))
+        res = num1 + num2
+        print(f'result: {res}\n\n')
+        input('press enter to continue')
+        print_calc_options()
         get_choice()
 
     elif choice == 'sub':
-        num1 = int(input('Enter the first number: '))
-        num2 = int(input('Enter the second number: '))
+        print('\nSubtraction')
+        num1 = float(input('Enter the first number: '))
+        num2 = float(input('Enter the second number: '))
         res = num1 - num2
-        print(f'Result: {res}'
+        print(f'Result: {res}\n\n')
+        input('press enter to continue')
+        print_calc_options()
         get_choice()
-        
+
     elif choice == 'mult':
-        pass
+        print('\nMultiplication\n')
+        num1 = float(input('Enter the first number: '))
+        num2 = float(input('Enter the second number: '))
+        res = num1 * num2
+        print(f'Result: {res}\n\n')
+        input('press enter to continue')
+        print_calc_options()
+        get_choice()
+
     elif choice == 'div':
-        pass
+        print('\nDivision\n')
+        num1 = float(input('Enter the first number: '))
+        num2 = float(input('Enter the second number: '))
+        res = num1 / num2
+        print(f'Result: {res}\n\n')
+        input('press enter to continue')
+        print_calc_options()
+        get_choice()
+
     elif choice == 'exp':
-        pass
-    elif choice == '':
+        print('\nExponent\n')
+        num1 = float(input('Enter the base number: '))
+        num2 = float(input('Enter the exponent: '))
+        res = num1 ** num2
+        print(f'Result: {res}\n\n')
+        input('press enter to continue')
+        print_calc_options()
+        get_choice()
+
+    elif choice == 'back':
         pass
     elif choice == 'exit':
-        print('Good-bye')
+        print('\nExiting...\nGood-bye!\n')
         exit()
+    elif choice == '':
+        print_calc_options()
+        get_choice()
     else:
         print('Not an option!')
         get_choice()
+
+print_calc_options()
+get_choice()
