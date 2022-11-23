@@ -11,18 +11,35 @@ def print_calc_options():
     print('(back) Go back to main menu')
     print('(exit) Exit the program\n')
 
+def add_nums():
+    '''Get two numbers and add them together'''
+
+    print('\nAddition')
+    try:
+
+        
+        num1 = float(input('Enter the first number: '))
+        num2 = float(input('Enter the second number: '))
+        res = num1 + num2
+        print(f'result: {res}\n\n')
+        input('press enter to continue')
+    except ValueError:
+        print('Must be a number!')
+        add_nums()
+    except KeyboardInterrupt:
+        print('Exiting program...\nGoodbye!')
+        exit()
+
+
+
+
 
 def get_choice():
     '''Get the user's choice'''
 
     choice = input('Choose an option: ').lower()
     if choice == 'add':
-        print('\nAddition\n')
-        num1 = float(input('Enter the first number: '))
-        num2 = float(input('Enter the second number: '))
-        res = num1 + num2
-        print(f'result: {res}\n\n')
-        input('press enter to continue')
+        add_nums()
         print_calc_options()
         get_choice()
 
