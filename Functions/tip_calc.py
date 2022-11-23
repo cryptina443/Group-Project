@@ -1,4 +1,5 @@
 def split_check(total):
+    '''Calculates check if split between 2 or more people'''
     amt_ppl = int(input('Between how many people will you be splitting this check? '))
        
     tip = float(input('What percentage would you like to tip? '))
@@ -8,6 +9,7 @@ def split_check(total):
     print(f'The tip amount per person would be ${tip_amt:.2f} making the new total of ${tip_amt * amt_ppl + total:.2f}')
     
 def non_split():
+    '''Calculates check without splitting'''
     tip = float(input('What percentage would you like to tip? '))
     tip = tip / 100 
     tip_amt = total * tip
@@ -16,13 +18,20 @@ def non_split():
 
 
 
-    
 if __name__  == '__main__':
 
     print('Welcome to the Tip Calculator!')
 
-    total = float(input('What is the total? '))
+    total = float(input('What is the total of the check? '))
     choice = input('Will you splitting the check? Yes/No: ')
+
+    while choice != "n":
+        pass
+    #idk how to format the menu :(
+        #print 1. yes
+        #      2. no
+        #      3. exit.. go back to main calculator options)
+
 
     if choice == 'yes':
         split_check(total)
