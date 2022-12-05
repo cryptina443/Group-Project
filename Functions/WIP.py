@@ -229,14 +229,15 @@ def get_temp():
 
 def temprature_convertion(temp_scales):
 
+    try:
+        temp_source = float(input("What is the temperature you are trying to convert: " ))
+    except ValueError:
+        print('Temperature must be a number!')
+        temprature_convertion(get_temp())
 
-    temp_source = float(input("What is the temperature you are trying to convert: " ))
-    
     if temp_scales == "f":
         res = (temp_source - 32.0) * (5.0/9.0)
         print(f'{temp_source} degrees F is {res:.2f} degrees C')
-        
-    
     elif temp_scales == "c":
         res = (temp_source * (9.0/5.0)) + 32.0
         print(f'{temp_source} degrees C is {res:.2f} degrees F')
