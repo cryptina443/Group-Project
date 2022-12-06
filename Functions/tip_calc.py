@@ -15,7 +15,7 @@ def tip_menu():
 
 def split_check():
     '''Gets amount of people check will be split between'''
-    amt_ppl = input('Between how many people will you be splitting this check? ')
+    amt_ppl = input('\nBetween how many people will you be splitting this check? ')
     #checking if amount of people is a number if yes it will pass that number to split_tip()
     if amt_ppl.isdigit():
         amt_ppl = int(amt_ppl)
@@ -30,49 +30,60 @@ def split_check():
 
 def split_tip(amt_ppl): 
     '''Calculates tip if total is split between 2 or more people'''
-
-    total = float(input('\nWhat is the total of the check? '))
-    #validating that total cannot be a negative number
-    #if yes it will recall, and ask question again
-    if total <= 0:
-        print('Not a valid amount. Enter a positive total.')
-        split_tip(amt_ppl)
-    else:
-        tip=input('\nWhat percentage would you like to tip? ')
-        if tip.isdigit()==False:
-            print('Please enter an appropriate value.')
-            #FIXME: missing code to make percentage question appear again :) 
+    try:
+        
+        total = float(input('\nWhat is the total of the check? '))
+        #validating that total cannot be a negative number
+        #if yes it will recall, and ask question again
+        if total <= 0:
+            print('Not a valid amount. Enter a positive total.')
+            split_tip(amt_ppl)
         else:
+            tip=input('\nWhat percentage would you like to tip? ')
+            while tip.isdigit()==False:
+                print('Please enter an appropriate value.')
+                tip=input('\nWhat percentage would you like to tip? ')
+                #FIXME: missing code to make percentage question appear again :)   
+            
             tip = float(tip)
             tip = tip / 100
             tip_amt = total * tip / amt_ppl
-            print(f'\nThe tip amount per person would be ${tip_amt:.2f} making the new total of ${tip_amt * amt_ppl + total:.2f}')
+            total_split = total / amt_ppl
+            print(f'\nEach person would pay ${total_split:.2f} + tip amount of ${tip_amt:.2f}')
+            print(f'The new total is ${tip_amt * amt_ppl + total:.2f}')
             re_cal_tip()
+            
+            
 
-
+    except ValueError:
+        print('Please insert an appropriate amount.')
+        split_tip(amt_ppl)
 
 
 def non_split():
     '''Calculates check without splitting'''
-
-    total = float(input('\nWhat is the total of the check? '))
-    if total <= 0:
-        print('Not a valid amount. Enter a positive total.')
-        non_split()
-    else:
-        tip = input('What percentage would you like to tip? ')
-        if tip.isdigit():
+    try:
+        total = float(input('\nWhat is the total of the check? '))
+        if total <= 0:
+            print('Not a valid amount. Enter a positive total.')
+            non_split()
+        else:
+            tip=input('\nWhat percentage would you like to tip? ')
+            while tip.isdigit()==False:
+                print('\nPlease enter an appropriate value.')
+                tip = input('\nWhat percentage would you like to tip? ')
+    
             tip = float(tip)
             tip = tip / 100
             tip_amt = total * tip #calculating tip
             print(f'\nThe tip amount would be ${tip_amt:.2f} making the new total ${total + tip_amt:.2f}') #displaying tip and total
             re_cal_tip()
-        #calling function again.. so they'll start over? how can i make it so that it only
-        #asks for the tip percentage again; while loop?
-        else:
-            print('Please insert an appropriate value.')
-            non_split()
+        
+    except ValueError:
+        print('\nPlease insert an appropriate value.')
+        non_split()
 
+    
 
 def re_cal_tip():
   ans = None
@@ -81,11 +92,10 @@ def re_cal_tip():
     if ans == 'y':
       tip_menu()
     elif ans ==  'n':
-      print('goodbye.. exiting programmain menu')
+      print('goodbye.. exiting program. back to Main Menu()')
     else:
-      print('Invalid input. Please try again.')
+      print('\nInvalid input. Please try again.')
       re_cal_tip()
-
 
 if __name__  == '__main__':
 
