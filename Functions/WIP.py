@@ -17,10 +17,11 @@ def main_menu():
             
         
         elif user_choice == 2:
-            print('Tip Calculator')
-            tip_menu()
+            #Tip Calculator
+            pass
         elif user_choice == 3:
             temp_calc()
+            pass
         elif user_choice == 4:
             print('Closing Calculator....\nGoodbye')
             exit()
