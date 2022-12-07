@@ -39,13 +39,7 @@ def split_tip(amt_ppl):
             print('Not a valid amount. Enter a positive total.')
             split_tip(amt_ppl)
         else:
-            tip=input('\nWhat percentage would you like to tip? ')
-            while tip.isdigit()==False:
-                print('Please enter an appropriate value.')
-                tip=input('\nWhat percentage would you like to tip? ')
-                #FIXME: missing code to make percentage question appear again :)   
-            
-            tip = float(tip)
+            tip=get_percent()
             tip = tip / 100
             tip_amt = total * tip / amt_ppl
             total_split = total / amt_ppl
@@ -68,12 +62,7 @@ def non_split():
             print('Not a valid amount. Enter a positive total.')
             non_split()
         else:
-            tip=input('\nWhat percentage would you like to tip? ')
-            while tip.isdigit()==False:
-                print('\nPlease enter an appropriate value.')
-                tip = input('\nWhat percentage would you like to tip? ')
-    
-            tip = float(tip)
+            tip = get_percent()
             tip = tip / 100
             tip_amt = total * tip #calculating tip
             print(f'\nThe tip amount would be ${tip_amt:.2f} making the new total ${total + tip_amt:.2f}') #displaying tip and total
@@ -100,13 +89,14 @@ def re_cal_tip():
 
 def get_percent():
     '''get desired tip percentage'''
-    tip = input('What percentage would you like to tip? ')
-    try:    
-        tip = float(tip)
-        return tip
+    global tip
+    try:
+        tip = float(input('What percentage would you like to tip? '))
+
     except ValueError:
         print('Not valid input! Must be a number!')
         get_percent()
+    return tip
 
 
 
