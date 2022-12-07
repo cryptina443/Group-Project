@@ -86,6 +86,7 @@ def non_split():
     
 
 def re_cal_tip():
+    
   ans = None
   while ans not in ('y','n'):
     ans = input('\nWould you like to calculate the tip again? (y/n) ')

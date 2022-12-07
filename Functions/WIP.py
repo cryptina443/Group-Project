@@ -260,6 +260,7 @@ def go_again():
 
 def tip_menu():
     '''Accepts input for tip'''
+    print('Welcome to the Tip Calculator!')
     choice = None
     while choice not in ('y','n'):
         choice= input('\nWill you be splitting the check? (y/n): ')
@@ -341,7 +342,7 @@ def re_cal_tip():
     if ans == 'y':
       tip_menu()
     elif ans ==  'n':
-      print('goodbye.. exiting program. back to Main Menu')
+      print('Goodbye. Exiting back to Main Menu')
       main_menu()
     else:
       print('\nInvalid input. Please try again.')
