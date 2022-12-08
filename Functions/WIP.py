@@ -2,7 +2,7 @@ def main_menu():
     '''Show the main menu options'''
 
 
-    print('\n\n\n<Multi> Calculator!\n')
+    print('\n<Multi> Calculator!\n')
     print('MENU OPTIONS')
     print('(1) Basic Calculator')
     print('(2) Tip Calculator')
@@ -10,27 +10,27 @@ def main_menu():
     print('(4) Close program')
 
     try:
-        user_choice = int(input('\nChoose function: '))
+        user_choice = int(input('\nChoose function: ')) ##get users choice for calculator options
 
         if user_choice == 1:
-            simple_calc()
+            simple_calc() ## call the simple calculator function
             
         
         elif user_choice == 2:
-            #Tip Calculator
-            pass
+            tip_menu() ## calls the tip calculator
+
         elif user_choice == 3:
-            temp_calc()
-            pass
+            temp_calc() ## calls the temperature calculator
+            
         elif user_choice == 4:
             print('Closing Calculator....\nGoodbye')
-            exit()
+            exit() ## clean program termination
 
     except ValueError:
-        main_menu()
+        main_menu() ## restart the main menu if wrong value is given
     except KeyboardInterrupt:
         print('Exiting program...\nGoodbye!')
-        exit()
+        exit() ## clean termination for keyboard interrupt
 
 def print_calc_options():
     '''prints calculator options'''
@@ -54,13 +54,13 @@ def add_nums():
         
         num1 = float(input('Enter the first number: '))
         num2 = float(input('Enter the second number: '))
-        res = num1 + num2
+        res = num1 + num2  ## assign result to res to be used later
         print(f'result: {res}\n\n')
         input('press enter to continue')
-    except ValueError:
-        print('Must be a number!')
+    except ValueError: ## input validation
+        print('Must be a number!') 
         add_nums()
-    except KeyboardInterrupt:
+    except KeyboardInterrupt: #clean exit
         print('Exiting program...\nGoodbye!')
         exit()
 
@@ -70,16 +70,16 @@ def sub_nums():
 
     
     try:  
-        print('\nSubtraction')  
+        print('\nSubtraction')   ## get the two numbers and subtract them
         num1 = float(input('Enter the first number: '))
         num2 = float(input('Enter the second number: '))
         res = num1 - num2
         print(f'Result: {res}\n\n')
         input('press enter to continue')
-    except ValueError:
+    except ValueError: ##input validation
         print('Must be a number!')
         sub_nums()
-    except KeyboardInterrupt:
+    except KeyboardInterrupt: ## clean exit
         print('Exiting program...\nGoodbye!')
         exit()
     
@@ -94,10 +94,10 @@ def mult_nums():
         res = num1 * num2
         print(f'Result: {res}\n\n')
         input('press enter to continue')
-    except ValueError:
+    except ValueError: ## inputn validation
         print('Must be a number!')
         mult_nums()
-    except KeyboardInterrupt:
+    except KeyboardInterrupt: ## clea exit
         print('Exiting program...\nGoodbye!')
         exit()
     
@@ -117,7 +117,7 @@ def div_nums():
     except KeyboardInterrupt:
         print('Exiting program...\nGoodbye!')
         exit()
-    except ZeroDivisionError:
+    except ZeroDivisionError: ## cant break meeeeeee 
         print('Dividing by zero is illegallll')
         div_nums()
 
@@ -126,22 +126,22 @@ def exp_nums():
 
     try:
         print('\nExponent\n')
-        num1 = float(input('Enter the base number: '))
-        num2 = float(input('Enter the exponent: '))
+        num1 = float(input('Enter the base number: ')) ## the first number given will the be number used for the base
+        num2 = float(input('Enter the exponent: ')) ## the second number is the power we raise that number to
         res = num1 ** num2
         print(f'Result: {res}\n\n')
         input('press enter to continue')
-    except ValueError:
+    except ValueError: ## input validation
         print('Must be a number!')
         exp_nums()
-    except KeyboardInterrupt:
+    except KeyboardInterrupt: ## clean exit
         print('Exiting program...\nGoodbye!')
         exit()
 
 
 def get_choice():
     '''Get the user's choice'''
-    try:
+    try: ## get the users choice and call the appropriate function
         choice = input('Choose an option: ').lower()
         if choice == 'add':
             add_nums()
@@ -169,29 +169,31 @@ def get_choice():
             get_choice()
 
         elif choice == 'back':
-            main_menu()
+            main_menu() ## user returns to main menu when back is entered
             
         elif choice == 'exit':
             print('\nExiting...\nGood-bye!\n')
-            exit()
+            exit() ## clean exit
         elif choice == '':
             print_calc_options()
-            get_choice()
+            get_choice() ## blank choice catch
         else:
             print('Not an option!')
-            get_choice()
+            get_choice() #input validation
     except KeyboardInterrupt:
         print('Exiting program...\nGoodbye!')
         exit()
 
 def simple_calc():
     '''Run the calculator function'''
-    print('\nBasic Calculator')
-    print_calc_options()
-    get_choice()
+    print('\nBasic Calculator') ##greetingsss
+    print_calc_options() #prints calc menu
+    get_choice() ##gets users choice for calculator, and then calls functions as needed. 
 
 
 def temp_menu():
+    '''Prints menu for temperature converter'''
+
     print('\nTemperature Converter')
     print('(f) Fahrenheit')
     print('(c) Celcius')
@@ -199,46 +201,50 @@ def temp_menu():
     print('(exit) Exit program\n')
 
 def temp_calc():
-    temprature_convertion(get_temp())
-    go_again()
+    '''Actual temperature converter'''
+
+
+    temprature_convertion(get_temp()) ##temperature conversion will use the value passed from get_temp to use the correct formula. 
+    go_again() ## repeat. 
     
 
 
 
 
 def get_temp():
+    '''Shows temperature conversion options and recieves unit of temperature'''
     
-    temp_menu()
+    temp_menu() #show menu 
     temp_scales = input('Select your choice: ')
     
-    if temp_scales.lower() == 'f':
+    if temp_scales.lower() == 'f':    ## lower() will allow f or F to be entered. 
         return temp_scales
-    elif temp_scales.lower() == 'c':
+    elif temp_scales.lower() == 'c': ## same as f 
         return temp_scales
-    elif temp_scales.lower() == 'back':
+    elif temp_scales.lower() == 'back': ## lower allows further use of shenanigan spellings. 
         main_menu()
-    elif temp_scales.lower() == 'exit':
+    elif temp_scales.lower() == 'exit': ## leaves... byeeeee
         print('\nExiting...\nGood-bye!\n')
-        exit()
+        exit() ## using exit() specifically tells the program to end. 
     else: 
         print('Not an option')
-        get_temp()
+        get_temp() ## invalid input check, if an invalid option is made, the program will return the user to the start. 
 
     
 
 
 def temprature_convertion(temp_scales):
-
+    global temp_source ## temp source is first used within the function, using global allows it to be called from the main program. 
     try:
-        temp_source = float(input("What is the temperature you are trying to convert: " ))
+        temp_source = float(input("What is the temperature you are trying to convert: " )) ## automatically convert input to float, IF valid type. 
     except ValueError:
         print('Temperature must be a number!')
-        temprature_convertion(get_temp())
+        temprature_convertion(get_temp())    ## If invalid type, restart the process from the beginning. 
 
-    if temp_scales == "f":
+    if temp_scales == "f": ##if temp scale was f, we use the fahr. to Celc. formula. 
         res = (temp_source - 32.0) * (5.0/9.0)
         print(f'{temp_source} degrees F is {res:.2f} degrees C')
-    elif temp_scales == "c":
+    elif temp_scales == "c": ## Convert celcius to fahrenheit. 
         res = (temp_source * (9.0/5.0)) + 32.0
         print(f'{temp_source} degrees C is {res:.2f} degrees F')
 
@@ -247,21 +253,20 @@ def temprature_convertion(temp_scales):
 
 def go_again():
     
-    repeat = input('Convert another? (y/n) ')
+    repeat = input('Convert another? (y/n) ') ## asks user if they would like to convert another temperature. 
     try:
-        if repeat.lower() == 'y':
+        if repeat.lower() == 'y': ##if yes, call the temp calc function again
             temp_calc()
-        elif repeat.lower() == 'n':
+        elif repeat.lower() == 'n': ##if no, call the main menu function
             main_menu()
         else:
             print('Not a valid option!')
             go_again()
     except TypeError:
-        print('Error')
+        print('Error') ## ?? We broke it, and then we fixed it, but we never commented why until now. ¯\_(ツ)_/¯
 
 def tip_menu():
     '''Accepts input for tip'''
-    print('Welcome to the Tip Calculator!')
     choice = None
     while choice not in ('y','n'):
         choice= input('\nWill you be splitting the check? (y/n): ')
@@ -281,7 +286,11 @@ def split_check():
     #checking if amount of people is a number if yes it will pass that number to split_tip()
     if amt_ppl.isdigit():
         amt_ppl = int(amt_ppl)
-        split_tip(amt_ppl)
+        if amt_ppl > 0: ## split checks must be divided between a positive amount of people. 
+            split_tip(amt_ppl)
+        else:
+            print('Not a valid amount. Enter a positive total.')
+            split_check()
     #if not it will call the function again and ask the questin again until an 
     #appropriate value is inserted
     else:
@@ -301,10 +310,16 @@ def split_tip(amt_ppl):
             print('Not a valid amount. Enter a positive total.')
             split_tip(amt_ppl)
         else:
-            tip=get_percent()
-            tip = tip / 100
-            tip_amt = total * tip / amt_ppl
-            total_split = total / amt_ppl
+            tip=input('\nWhat percentage would you like to tip? ')
+            while tip.isdigit()==False:
+                print('Please enter an appropriate value.')
+                tip=input('\nWhat percentage would you like to tip? ')
+                  
+            
+            tip = float(tip) ## convert input to float
+            tip = tip / 100 ## divide the number by 100 to get the percentage value
+            tip_amt = (total * tip) / amt_ppl ## tip amount calculation goes here
+            total_split = total / amt_ppl 
             print(f'\nEach person would pay ${total_split:.2f} + tip amount of ${tip_amt:.2f}')
             print(f'The new total is ${tip_amt * amt_ppl + total:.2f}')
             re_cal_tip()
@@ -313,18 +328,23 @@ def split_tip(amt_ppl):
 
     except ValueError:
         print('Please insert an appropriate amount.')
-        split_tip(amt_ppl)
+        split_tip(amt_ppl) ##restart process if an incorrect input is given
 
 
 def non_split():
     '''Calculates check without splitting'''
     try:
         total = float(input('\nWhat is the total of the check? '))
-        if total <= 0:
+        if total <= 0: ##input validation for an incorrect check amount
             print('Not a valid amount. Enter a positive total.')
             non_split()
         else:
-            tip = get_percent()
+            tip=input('\nWhat percentage would you like to tip? ')
+            while tip.isdigit()==False: ## if string is anything but a digit, it will continue to ask for the tip percentage. 
+                print('\nPlease enter an appropriate value.')
+                tip = input('\nWhat percentage would you like to tip? ')
+    
+            tip = float(tip) 
             tip = tip / 100
             tip_amt = total * tip #calculating tip
             print(f'\nThe tip amount would be ${tip_amt:.2f} making the new total ${total + tip_amt:.2f}') #displaying tip and total
@@ -337,31 +357,20 @@ def non_split():
     
 
 def re_cal_tip():
-  ans = None
-  while ans not in ('y','n'):
-    ans = input('\nWould you like to calculate the tip again? (y/n) ')
-    if ans == 'y':
-      tip_menu()
-    elif ans ==  'n':
-      print('Goodbye. Exiting back to Main Menu')
-      main_menu()
-    else:
-      print('\nInvalid input. Please try again.')
-      re_cal_tip()
+    '''Ask if the user wants to calculate another tip amount'''
+    
+    ans = None
+    while ans not in ('y','n'): ## the only acceptable choices
+        ans = input('\nWould you like to calculate the tip again? (y/n) ')
+        if ans == 'y': ## if yes, recalls the tip menu function
+          tip_menu()
+        elif ans ==  'n': ## if no, go back to the main menu for further options 
+          print('Exiting program. Back to Main Menu')
+          main_menu()
+        else:
+          print('\nInvalid input. Please try again.')
+          re_cal_tip() ##input validation
 
 
-def get_percent():
-    '''get desired tip percentage'''
-    global tip
-    try:
-        tip = float(input('What percentage would you like to tip? '))
-
-    except ValueError:
-        print('Not valid input! Must be a number!')
-        get_percent()
-    return tip
-
-
-
-
-main_menu()
+if __name__ == '__main__':
+    main_menu()
